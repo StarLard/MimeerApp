@@ -13,10 +13,12 @@
     import SwiftData
     import MimeerKit
 
-    struct DebugCommands: Commands {
+    public struct DebugCommands: Commands {
         @FocusedValue(\.modelContext) var modelContext: ModelContext?
 
-        var body: some Commands {
+        public init() {}
+
+        public var body: some Commands {
             CommandMenu("Debug") {
                 Button("Show All Tips") {
                     Tips.showAllTipsForTesting()

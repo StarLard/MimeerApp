@@ -10,9 +10,9 @@ import OSLog
 import Observation
 
 extension Logger {
-    static let general = Logger(category: "General")
+    public static let general = Logger(category: "General")
 
-    init(category: String) {
+    public init(category: String) {
         self.init(subsystem: Bundle.main.bundleIdentifier!, category: category)
     }
 }

@@ -8,10 +8,12 @@
 import Foundation
 import SwiftUI
 
-struct AboutCommands: Commands {
+public struct AboutCommands: Commands {
     @Environment(\.openWindow) var openWindow
 
-    var body: some Commands {
+    public init() {}
+
+    public var body: some Commands {
         CommandGroup(replacing: .appInfo) {
             Button("About \(AppInfo.displayName)", action: showAboutView)
         }

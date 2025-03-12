@@ -10,13 +10,15 @@ import MimeerKit
 import SwiftData
 import SwiftUI
 
-struct ActivityCommands: Commands {
+public struct ActivityCommands: Commands {
     @FocusedBinding(\.navigationPath) var navigationPath: [Activity]?
     @FocusedValue(\.modelContext) var modelContext: ModelContext?
     @FocusedBinding(\.isNewActivityViewPresented) var isNewActivityViewPresented: Bool?
     @FocusedBinding(\.isActivityEditorPresented) var isActivityEditorPresented: Bool?
 
-    var body: some Commands {
+    public init() {}
+
+    public var body: some Commands {
         CommandGroup(before: .newItem) {
             if activity != nil {
                 Button("Log Event", action: createEvent)

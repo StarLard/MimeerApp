@@ -10,8 +10,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "MimeerApp",
-            targets: ["MimeerApp"]
+            name: "MimeerAppCore",
+            targets: ["MimeerAppCore"]
         ),
         .library(
             name: "MimeerKit",
@@ -29,7 +29,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "MimeerApp",
+            name: "MimeerAppCore",
             dependencies: [
                 "MimeerKit",
                 .product(name: "Sentry", package: "sentry-cocoa")
@@ -39,8 +39,8 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "MimeerAppTests",
-            dependencies: ["MimeerApp"],
+            name: "MimeerAppCoreTests",
+            dependencies: ["MimeerAppCore"],
             plugins: [
                 .plugin(name: "Lint", package: "SwiftFormatPlugins")
             ]

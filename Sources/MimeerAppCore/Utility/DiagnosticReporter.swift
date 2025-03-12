@@ -11,10 +11,10 @@ import Sentry
 import StarLardKit
 
 @MainActor
-final class DiagnosticReporter {
+public final class DiagnosticReporter {
     // MARK: Public
 
-    static let shared = DiagnosticReporter()
+    public static let shared = DiagnosticReporter()
 
     private(set) var isRunning = false
 
@@ -23,7 +23,7 @@ final class DiagnosticReporter {
         var shouldErrorsTriggerAssertionFailure = false
     #endif
 
-    func recordError(
+    public func recordError(
         _ error: Error,
         level: OSLogType = .error,
         assertOnSimulator: Bool = false,
@@ -49,7 +49,7 @@ final class DiagnosticReporter {
         #endif
     }
 
-    func recordError(
+    public func recordError(
         _ errorDescription: String,
         level: OSLogType = .error,
         assertOnSimulator: Bool = false,
@@ -76,7 +76,7 @@ final class DiagnosticReporter {
         #endif
     }
 
-    func captureUserFeedback(name: String, email: String, comments: String) {
+    public func captureUserFeedback(name: String, email: String, comments: String) {
         let feedbackEventID =
             recentSentryEventID.map(SentryId.init(uuidString:))
             ?? SentrySDK.capture(message: "user-feedback")
@@ -90,7 +90,7 @@ final class DiagnosticReporter {
         SentrySDK.capture(feedback: feedback)
     }
 
-    func start() {
+    public func start() {
         guard !isRunning else { return }
         logger.debug("Starting diagnostic reporter")
         defer { isRunning = true }
@@ -143,7 +143,7 @@ final class DiagnosticReporter {
         }
     }
 
-    func stop() {
+    public func stop() {
         guard isRunning else { return }
         defer { isRunning = false }
         logger.debug("Stopping diagnostic reporter")

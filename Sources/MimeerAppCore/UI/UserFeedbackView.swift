@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct UserFeedbackView: View {
-    var body: some View {
+public struct UserFeedbackView: View {
+    public init() {}
+
+    public var body: some View {
         Form {
             Section(header: Text("Name")) {
                 TextField("Optional", text: $name)

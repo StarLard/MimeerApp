@@ -8,10 +8,12 @@
 import Foundation
 import SwiftUI
 
-struct HelpCommands: Commands {
+public struct HelpCommands: Commands {
     @Environment(\.openWindow) var openWindow
 
-    var body: some Commands {
+    public init() {}
+
+    public var body: some Commands {
         CommandGroup(replacing: .help) {
             Link("Support", destination: AppInfo.supportURL)
             Button("Send Feedback", action: showUserFeedback)

@@ -12,7 +12,7 @@ import WidgetKit
 
 public struct ActivityWidget: Widget {
     public init() {}
-    
+
     let kind: String = "Activity Widget"
 
     var families: [WidgetFamily] {

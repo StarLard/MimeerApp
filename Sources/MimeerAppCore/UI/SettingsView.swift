@@ -10,12 +10,14 @@ import SwiftData
 import SwiftUI
 import TipKit
 
-struct SettingsView: View {
+public struct SettingsView: View {
     #if os(iOS)
         @Environment(\.dismiss) private var dismiss
         @Environment(\.modelContext) private var modelContext
 
-        var body: some View {
+        public init() {}
+
+        public var body: some View {
             NavigationStack {
                 List {
                     Section(

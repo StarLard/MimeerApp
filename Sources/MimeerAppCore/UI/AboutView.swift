@@ -9,8 +9,11 @@
 
     import SwiftUI
 
-    struct AboutView: View {
-        var body: some View {
+    public struct AboutView: View {
+
+        public init() {}
+
+        public var body: some View {
             HStack(alignment: .center) {
                 Image(nsImage: AppInfo.icon)
                     .resizable()

@@ -11,7 +11,7 @@ import SwiftData
 import SwiftUI
 import TipKit
 
-struct ContentView: View {
+public struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: [SortDescriptor(\Activity.displayPriority), SortDescriptor(\Activity.title)])
     private var activities: [Activity]
@@ -36,7 +36,9 @@ struct ContentView: View {
         #endif
     }()
 
-    var body: some View {
+    public init() {}
+
+    public var body: some View {
         NavigationSplitView(preferredCompactColumn: $preferredCompactColumn) {
             Group {
                 if isEditing {

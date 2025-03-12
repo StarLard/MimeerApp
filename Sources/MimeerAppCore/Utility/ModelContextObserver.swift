@@ -11,10 +11,10 @@ import OSLog
 import SwiftData
 
 @MainActor
-final class ModelContextObserver {
-    static let shared = ModelContextObserver()
+public final class ModelContextObserver {
+    public static let shared = ModelContextObserver()
 
-    func observe(context: ModelContext) {
+    public func observe(context: ModelContext) {
         notificationCenter
             .publisher(for: ModelContext.willSave, object: context)
             .sink { [weak self] notification in
