@@ -15,9 +15,9 @@ import StarLardKit
 #endif
 
 /// Contains plist and process info
-enum AppInfo {
+public enum AppInfo {
     /// The app's display name
-    static let displayName: String = String(
+    public static let displayName: String = String(
         localized: "Mimeer", comment: "The display name for the app")
 
     /// An automatically generated ID assigned to the app by Apple.
