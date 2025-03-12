@@ -8,11 +8,18 @@
 import StarLardKit
 
 extension DeploymentEnvironment {
-    public static let isRunningForScreenshots: Bool = {
-        #if DEBUG
-            return false
-        #else
-            return false
-        #endif
-    }()
+    @MainActor public static var isRunningForScreenshots: Bool {
+        get {
+            #if DEBUG
+                return _isRunningForScreenshots
+            #else
+                return false
+            #endif
+        }
+        set {
+            _isRunningForScreenshots = newValue
+        }
+    }
+
+    @MainActor private static var _isRunningForScreenshots = false
 }
