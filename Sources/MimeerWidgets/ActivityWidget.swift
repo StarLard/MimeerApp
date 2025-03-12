@@ -10,7 +10,9 @@ import SwiftData
 import SwiftUI
 import WidgetKit
 
-struct ActivityWidget: Widget {
+public struct ActivityWidget: Widget {
+    public init() {}
+    
     let kind: String = "Activity Widget"
 
     var families: [WidgetFamily] {
@@ -22,7 +24,7 @@ struct ActivityWidget: Widget {
     }
 
     @MainActor
-    var body: some WidgetConfiguration {
+    public var body: some WidgetConfiguration {
         AppIntentConfiguration(
             kind: kind,
             intent: ActivityWidgetIntent.self,
