@@ -77,14 +77,17 @@ final class DiagnosticReporter {
     }
 
     func captureUserFeedback(name: String, email: String, comments: String) {
-        let userFeedbackEventID =
+        let feedbackEventID =
             recentSentryEventID.map(SentryId.init(uuidString:))
             ?? SentrySDK.capture(message: "user-feedback")
-        let userFeedback = UserFeedback(eventId: userFeedbackEventID)
-        userFeedback.comments = "It broke."
-        userFeedback.email = "john.doe@example.com"
-        userFeedback.name = "John Doe"
-        SentrySDK.capture(userFeedback: userFeedback)
+        let feedback = SentryFeedback(
+            message: comments,
+            name: name,
+            email: email,
+            source: .custom,
+            associatedEventId: feedbackEventID
+        )
+        SentrySDK.capture(feedback: feedback)
     }
 
     func start() {
