@@ -11,11 +11,11 @@ import SwiftUI
 import TipKit
 
 public struct SettingsView: View {
+    public init() {}
+
     #if os(iOS)
         @Environment(\.dismiss) private var dismiss
         @Environment(\.modelContext) private var modelContext
-
-        public init() {}
 
         public var body: some View {
             NavigationStack {
@@ -86,7 +86,7 @@ public struct SettingsView: View {
         #endif
 
     #elseif os(macOS)
-        var body: some View {
+        public var body: some View {
             TabView {
                 PrivacyInfoView()
                     .tabItem {
