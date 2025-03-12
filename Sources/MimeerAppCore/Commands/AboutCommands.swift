@@ -16,6 +16,7 @@ public struct AboutCommands: Commands {
     public var body: some Commands {
         CommandGroup(replacing: .appInfo) {
             Button("About \(AppInfo.displayName)", action: showAboutView)
+            Link("View Source", destination: AppInfo.sourceURL)
         }
     }
 

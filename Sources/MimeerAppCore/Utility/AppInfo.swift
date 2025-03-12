@@ -99,4 +99,5 @@ public enum AppInfo {
     static let marketingURL: URL = URL(string: "https://mimeer.starlard.dev")!
     static let privacyURL: URL = URL(string: "https://mimeer.starlard.dev/privacy")!
     static let supportURL: URL = URL(string: "https://mimeer.starlard.dev/support")!
+    static let sourceURL: URL = URL(string: "https://github.com/StarLard/MimeerApp")!
 }

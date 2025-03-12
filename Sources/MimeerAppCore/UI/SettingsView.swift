@@ -27,6 +27,9 @@ public struct SettingsView: View {
                         Link(destination: AppInfo.appStoreURL) {
                             Label("Rate \(AppInfo.displayName)", systemImage: "suit.heart")
                         }
+                        Link(destination: AppInfo.sourceURL) {
+                            Label("View Source", systemImage: "chevron.left.forwardslash.chevron.right")
+                        }
                         Link(destination: AppInfo.supportURL) {
                             Label("Support", systemImage: "wrench.and.screwdriver")
                         }
