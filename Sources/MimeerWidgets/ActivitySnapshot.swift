@@ -37,7 +37,7 @@ extension ActivitySnapshot {
         for activity: Activity,
         recentEvents: [Event],
         through date: Date
-    ) async -> [ActivitySnapshot] {
+    ) -> [ActivitySnapshot] {
         // Initial state.
         let initial = ActivitySnapshot(date: .now, activity: activity, recentEvents: recentEvents)
         var snapshots: [ActivitySnapshot] = [initial]
@@ -49,7 +49,7 @@ extension ActivitySnapshot {
             from: 0, through: min(Date.now.addingTimeInterval(.hour), date).timeIntervalSinceNow,
             by: 5 * .minute)
         {
-            await snapshots.append(
+            snapshots.append(
                 ActivitySnapshot(
                     date: Date(timeIntervalSinceCurrentDate: timeInterval), activity: activity,
                     recentEvents: recentEvents))
@@ -57,7 +57,7 @@ extension ActivitySnapshot {
 
         // Hourly thereafter
         for timeInterval in stride(from: 0, through: date.timeIntervalSinceNow, by: .hour) {
-            await snapshots.append(
+            snapshots.append(
                 ActivitySnapshot(
                     date: Date(timeIntervalSinceCurrentDate: timeInterval), activity: activity,
                     recentEvents: recentEvents))

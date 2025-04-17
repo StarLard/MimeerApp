@@ -102,10 +102,10 @@ struct ActivitySnapshotTimelineProvider: AppIntentTimelineProvider {
         }
     }
 
-    func snapshot(for configuration: ActivityWidgetIntent, in context: Context) async
+    func snapshot(for configuration: ActivityWidgetIntent, in context: Context)
         -> ActivityWidgetEntry
     {
-        let date = await Date.current
+        let date = Date.current
         guard let id = configuration.activity?.id, let activity = activity(with: id) else {
             if context.isPreview {
                 return placeholder(in: context)
@@ -118,18 +118,18 @@ struct ActivitySnapshotTimelineProvider: AppIntentTimelineProvider {
         return ActivityWidgetEntry(date: snapshot.date, snapshot: snapshot)
     }
 
-    func timeline(for configuration: ActivityWidgetIntent, in context: Context) async -> Timeline<
+    func timeline(for configuration: ActivityWidgetIntent, in context: Context) -> Timeline<
         ActivityWidgetEntry
     > {
         guard let id = configuration.activity?.id, let activity = activity(with: id) else {
-            let date = await Date.current
+            let date = Date.current
             return Timeline(
                 entries: [ActivityWidgetEntry(date: date)],
                 policy: .never
             )
         }
         let recentEvents = events(forActivityWithID: id)
-        let snapshots = await ActivitySnapshot.snapshots(
+        let snapshots = ActivitySnapshot.snapshots(
             for: activity, recentEvents: recentEvents,
             through: Date(timeIntervalSinceCurrentDate: 36 * .hour))
         let entries = snapshots.map { snapshot in
