@@ -67,7 +67,6 @@ extension ModelContainer {
 extension ModelConfiguration {
     @MainActor
     fileprivate static let production: ModelConfiguration = {
-        #warning("Finalize ModelConfiguration")
         // By default, SwiftData infers the correct configuration
         return ModelConfiguration()
     }()
