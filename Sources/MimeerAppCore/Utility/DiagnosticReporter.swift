@@ -36,10 +36,10 @@ public final class DiagnosticReporter {
 
         if !DeploymentEnvironment.isRunningForPreviews {
             logger.debug("Error captured: \(error.localizedDescription)")
-            recentSentryEventID =
-                SentrySDK.capture(error: error) { scope in
-                    scope.setLevel(level.sentryLevel)
-                }.sentryIdString
+            let eventID = SentrySDK.capture(error: error) { scope in
+                scope.setLevel(level.sentryLevel)
+            }.sentryIdString
+            recentSentryEventID = eventID
         }
 
         #if DEBUG && targetEnvironment(simulator)
@@ -62,11 +62,10 @@ public final class DiagnosticReporter {
 
         if !DeploymentEnvironment.isRunningForPreviews {
             logger.debug("Error captured: \(errorDescription)")
-
-            recentSentryEventID =
-                SentrySDK.capture(message: errorDescription) { scope in
-                    scope.setLevel(level.sentryLevel)
-                }.sentryIdString
+            let eventID = SentrySDK.capture(message: errorDescription) { scope in
+                scope.setLevel(level.sentryLevel)
+            }.sentryIdString
+            recentSentryEventID = eventID
         }
 
         #if DEBUG && targetEnvironment(simulator)
@@ -122,14 +121,8 @@ public final class DiagnosticReporter {
             }
             options.onCrashedLastRun = { [weak self] event in
                 let eventID = event.eventId.sentryIdString
-                MainActor.assumeIsolated {
-                    if Thread.isMainThread {
-                        self?.recentSentryEventID = eventID
-                    } else {
-                        DispatchQueue.main.sync {
-                            self?.recentSentryEventID = eventID
-                        }
-                    }
+                Task { @MainActor [weak self] in
+                    self?.recentSentryEventID = eventID
                 }
             }
         }
