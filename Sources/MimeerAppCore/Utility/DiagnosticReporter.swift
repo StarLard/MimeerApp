@@ -166,7 +166,7 @@ public final class DiagnosticReporter {
     private(set) var recentSentryEventID: String?
 
     private nonisolated func attachLogsToSentry() {
-        // We can assume we are running since this ic only called fron a callback by the SDK
+        // We can assume we are running since this is only called from a callback by the SDK
         do {
             let logStore = try LogStore(strategy: .sinceEnd, timeinterval: 60)
             try logStore.getEntries()
