@@ -24,7 +24,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/StarLard/StarLardKit.git", branch: "master"),
-        .package(url: "https://github.com/getsentry/sentry-cocoa.git", .upToNextMajor(from: "8.49.0")),
+        .package(url: "https://github.com/getsentry/sentry-cocoa.git", .upToNextMajor(from: "8.56.2")),
         .package(url: "https://github.com/StarLard/SwiftFormatPlugins.git", .upToNextMajor(from: "1.1.0"))
     ],
     targets: [
