@@ -13,9 +13,6 @@ import SwiftUI
 public typealias Activity = MimeerSchemaV1.Activity
 public typealias Event = MimeerSchemaV1.Event
 
-/// https://developer.apple.com/forums/thread/756802
-extension Schema.Version: @unchecked @retroactive Sendable {}
-
 public enum MimeerSchemaV1: VersionedSchema {
     public static let versionIdentifier = Schema.Version(1, 0, 0)
 
